@@ -257,6 +257,22 @@ canvas {
     rotate: 360deg;
   }
 }
+.my-element {
+  display: inline-block;
+  margin: 0 0.5rem;
+
+  animation: bounce; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 2s; /* don't forget to set a duration! */
+}
+.animate__bounce {
+  --animate-duration: 2s;
+}
+
+/* This changes all the animations globally */
+:root {
+  --animate-duration: 800ms;
+  --animate-delay: 0.9s;
+}
 
 @keyframes breathe {
   from,
@@ -276,7 +292,7 @@ canvas {
   font-size: 2rem;
   font-weight: 500;
   margin-bottom: 1rem;
-  padding-left: 22px;
+  padding-left: 95px;
 }
 
 html,
