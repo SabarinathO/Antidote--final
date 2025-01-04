@@ -50,19 +50,16 @@ canvas {
   width: 100%;
   max-width: 400px;
   padding: 2rem;
-  background: rgba(0, 0, 0, 0.6);
   border-radius: 8px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .signup-form input {
   width: 100%;
   padding: 0.75rem;
-  border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 1rem;
-  background: #f9f9f9;
-  color: #333;
+  background: transparent;
+  color: white;
   outline: none;
   transition: border-color 0.3s;
 }
@@ -110,6 +107,37 @@ canvas {
   inherits: false;
 }
 
+.ml14 {
+  font-weight: 10;
+  font-size: 3.2em;
+  padding-left: 62px;
+}
+
+.ml14 .text-wrapper {
+  position: relative;
+  display: inline-block;
+  padding-top: 0.1em;
+  padding-right: 0.05em;
+  padding-bottom: 0.15em;
+}
+
+.ml14 .line {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: #fff;
+  transform-origin: 100% 100%;
+  bottom: 0;
+}
+
+.ml14 .letter {
+  display: inline-block;
+  line-height: 1em;
+}
+
+
 .shiny-cta {
   --animation: gradient-angle linear infinite;
   --duration: 3s;
@@ -119,11 +147,12 @@ canvas {
   overflow: hidden;
   cursor: pointer;
   outline-offset: 4px;
-  padding: 1.25rem 2.5rem;
   font-family: inherit;
   font-size: 1.125rem;
   line-height: 1.2;
   border: 1px solid transparent;
+  width: 150px;
+  height: 40px;
   border-radius: 360px;
   color: var(--shiny-cta-fg);
   background: linear-gradient(var(--shiny-cta-bg), var(--shiny-cta-bg))
@@ -251,23 +280,6 @@ canvas {
     --gradient-angle: 360deg;
   }
 }
-
-@keyframes shimmer {
-  to {
-    rotate: 360deg;
-  }
-}
-.my-element {
-  display: inline-block;
-  margin: 0 0.5rem;
-
-  animation: bounce; /* referring directly to the animation's @keyframe declaration */
-  animation-duration: 2s; /* don't forget to set a duration! */
-}
-.animate__bounce {
-  --animate-duration: 2s;
-}
-
 /* This changes all the animations globally */
 :root {
   --animate-duration: 800ms;
@@ -287,14 +299,8 @@ canvas {
   font-size: 1rem;
   color: white;
   text-align: center;
+  padding-left: 50px;
 }
-.form-heading{
-  font-size: 2rem;
-  font-weight: 500;
-  margin-bottom: 1rem;
-  padding-left: 95px;
-}
-
 html,
 body {
   height: 100%;
