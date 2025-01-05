@@ -21,6 +21,7 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-attachment: fixed;
 }
 
 /* Canvas for animation */
@@ -51,6 +52,8 @@ canvas {
   max-width: 400px;
   padding: 2rem;
   border-radius: 8px;
+  background-color: rgba(0,0,0,0.6);/* Example dark background for better contrast */
+  padding: 1rem;
 }
 
 .signup-form input {
@@ -58,9 +61,11 @@ canvas {
   padding: 0.75rem;
   border-radius: 4px;
   font-size: 1rem;
-  background: transparent;
+  background: rgba(0, 0, 0, 0.5); /* 50% transparent black background */
   color: white;
   outline: none;
+  border: none; /* Optional: Remove default border */
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Add glowing effect */
   transition: border-color 0.3s;
 }
 
@@ -110,7 +115,8 @@ canvas {
 .ml14 {
   font-weight: 10;
   font-size: 3.2em;
-  padding-left: 62px;
+  padding-left: 55px;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .ml14 .text-wrapper {
