@@ -63,18 +63,25 @@ button.normal{
 body {
   width: 100%;
 }
-#header{
+#header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 20px 80px;
-  background:whitesmoke;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+  background: whitesmoke;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
   z-index: 999;
   position: sticky;
   top: 0;
   left: 0;
+  height: 100px; /* Set a fixed height for the header */
 }
+
+.logo{
+  width: 140px;
+  height: auto;
+}
+
 #navbar{
   display: flex;
   justify-content: center;
@@ -463,19 +470,146 @@ button.white{
 .full-form{
   padding: 20px 20px 20px 20px;
 }
+/* cart */
+
+#cart{
+  overflow-x: auto;
+}
+
+#page-header2 {
+  background-image: url("img/banner/b16.jpg");
+  width: 100%; /* Ensures full viewport width */
+  height: 40vh; /* Ensures half the viewport height */
+  background-size: cover; /* Scales to cover the entire container */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents tiling */
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  padding: 14px;
+}
+
+
+#page-header2 h2,
+#page-header2 p{
+  color: black;
+}
+
+#cart table{
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  white-space: nowrap;
+}
+#cart table img{
+  width: 70px;
+}
+
+#cart table i{
+  color: black;
+}
+
+#cart table td:nth-child(1){
+  width: 100px;
+  text-align: center;
+}
+
+#cart table td:nth-child(2){
+  width: 150px;
+  text-align: center;
+}
+
+#cart table td:nth-child(3){
+  width: 250px;
+  text-align: center;
+}
+
+#cart table td:nth-child(4),
+#cart table td:nth-child(5),
+#cart table td:nth-child(6){
+  width: 150px;
+  text-align: center;
+}
+
+#cart table td:nth-child(5) input{
+  width: 70px;
+  padding: 10px 5px 10px 15px;
+}
+
+#cart table thead{
+  border: 1px solid #e2e9e1;
+  border-left: none;
+  border-right: none;
+}
+
+#cart table thead td{
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 13px;
+  padding: 18px 0;
+}
+
+#cart table tbody tr td{
+  padding-top: 15px;
+}
+
+#cart table tbody td{
+  font-size: 13px;
+}
+
+#cart-add{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+#subtotal{
+  width: 50%;
+  margin-bottom: 30px;
+  border: 1px solid #e2e9e1;
+  padding: 30px;
+}
+
+#subtotal table{
+  border-collapse:collapse;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+#subtotal table td{
+  width: 50%;
+  border: 1px solid #e2e9e1;
+  padding: 10px;
+  font-size: 13px;
+}
+
+#subtotal h3{
+  padding-bottom: 15px;
+}
+
+#subtotal button{
+  background-color: #088178;
+  color: #fff;
+  padding: 12px 20px;
+}
 
 footer.section-p1 {
   background-color: #333; /* Dark grey background */
   padding: 40px 20px;
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Ensure responsiveness */
   border-top: 2px solid #444; /* Slightly lighter divider line */
+  min-height: 200px; /* Consistent minimum height */
 }
 
 footer.section-p1 .col {
   flex: 1 1 200px; /* Responsive columns */
   margin: 10px;
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
+  align-items: flex-start; /* Align content to the start */
 }
 
 footer.section-p1 h4 {
@@ -484,7 +618,8 @@ footer.section-p1 h4 {
   color: #fff; /* White text for headings */
 }
 
-footer.section-p1 p, footer.section-p1 a {
+footer.section-p1 p, 
+footer.section-p1 a {
   font-size: 14px;
   color: #ccc; /* Light grey text */
   text-decoration: none; /* Remove underline from links */
@@ -496,6 +631,10 @@ footer.section-p1 p, footer.section-p1 a {
 footer.section-p1 a:hover {
   color: #007bff; /* Highlight links on hover */
   text-decoration: none; /* Ensure no underline */
+}
+
+footer.section-p1 .follow {
+  margin-top: 20px; /* Add space above follow section */
 }
 
 footer.section-p1 .follow .icon {
@@ -515,13 +654,17 @@ footer.section-p1 .follow .icon i:hover {
 }
 
 footer.section-p1 .col img {
-  max-width: 100%;
+  width: 140px; /* Fixed width */
+  height: 96px; /* Fixed height */
   margin-top: 15px;
   margin-bottom: 15px;
+  object-fit: cover; /* Ensures the image fills the defined dimensions */
 }
 
 footer.section-p1 .col:last-child img {
   max-width: 120px; /* Size for payment gateway image */
+  max-height: 50px; /* Limit height for smaller appearance */
+  object-fit: contain; /* Maintain aspect ratio for payment image */
 }
 
 
@@ -711,5 +854,10 @@ footer.section-p1 .col:last-child img {
   #contact-details .map{
     width: 100%;
     height: 300px;
+  }
+
+  #subtotal{
+    width: 100%;
+    padding: 20px;
   }
 }

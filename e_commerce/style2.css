@@ -65,17 +65,23 @@ button.normal{
 body {
   width: 100%;
 }
-#header{
+#header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 20px 80px;
-  background:whitesmoke;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+  background: whitesmoke;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
   z-index: 999;
   position: sticky;
   top: 0;
   left: 0;
+  height: 100px; /* Set a fixed height for the header */
+}
+
+.logo{
+  width: 140px;
+  height: auto;
 }
 #navbar{
   display: flex;
