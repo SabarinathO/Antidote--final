@@ -861,3 +861,27 @@ footer.section-p1 .col:last-child img {
     padding: 20px;
   }
 }
+
+
+/* sell */
+
+
+#page-header3 {
+  background-image: url("img/banner/b5.jpg");
+  width: 100%; /* Ensures full viewport width */
+  height: 40vh; /* Ensures half the viewport height */
+  background-size: cover; /* Scales to cover the entire container */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents tiling */
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  padding: 14px;
+}
+
+
+#page-header3 h2,
+#page-header3 p{
+  color: white;
+}
