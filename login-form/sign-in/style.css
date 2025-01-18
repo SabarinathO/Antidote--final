@@ -109,7 +109,7 @@ html, body {
   
   
   .signup-form input {
-    width: 70%;
+    width: 100%;
     padding: 0.75rem;
     border-radius: 4px;
     font-size: 1rem;
