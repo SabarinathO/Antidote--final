@@ -42,10 +42,13 @@
             <form id="sellForm">
                 <label for="name">Your Name:</label>
                 <input type="text" id="name" name="name" placeholder="Enter your name" required>
-
+    
                 <label for="email">Email Address:</label>
                 <input type="email" id="email" name="email" placeholder="Enter your email" required>
-
+    
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+    
                 <label for="product">Product Name:</label>
                 <select id="product" name="product" required>
                     <option class="pro-select" value="">Select a product</option>
@@ -54,34 +57,35 @@
                     <option value="Books">Books</option>
                     <option value="Other">Other</option>
                 </select>
-
+    
                 <div id="otherProductDiv" style="display: none;">
                     <label for="otherProduct">Specify Product:</label>
                     <input type="text" id="otherProduct" name="otherProduct" placeholder="Enter product name">
                 </div>
-
+    
                 <label for="price">Price:</label>
                 <input type="number" id="price" name="price" placeholder="Enter price in USD" required>
-
+    
                 <label for="description">Description:</label>
                 <textarea id="description" name="description" placeholder="Enter product description" required></textarea>
-
-                <label for="images">Upload Images (Max 4):</label>
-                <input type="file" id="images" name="images" accept="image/*" multiple required>
-                <p id="imageWarning" style="color: red; display: none;">You can upload a maximum of 4 images.</p>
-
+    
+                <label for="primaryImage">Upload Primary Image:</label>
+                <input type="file" id="primaryImage" name="primaryImage" accept="image/*" required>
+    
+                <label for="additionalImages">Upload Additional Images (Max 3):</label>
+                <input type="file" id="additionalImages" name="additionalImages" accept="image/*" multiple>
+    
                 <button type="submit">Submit</button>
             </form>
         </div>
     </section>
-
-    <section id="product-list" class="section-p1">
-        <h3>Recently Listed Items</h3>
-        <div id="productContainer">
-            <!-- Dynamically added products will appear here -->
+    
+    <section id="product-details" class="section-p1" style="display: none;">
+        <div id="productDisplay" class="product-box" style="border: 1px solid #ccc; padding: 20px; margin: 20px auto; max-width: 600px;">
+            <!-- Product details will be dynamically displayed here -->
         </div>
     </section>
-
+    
     <footer class="section-p1">
         <div class="col">
             <img src="img/logo.png" alt="">
@@ -122,13 +126,13 @@
 
     <script>
         const form = document.getElementById('sellForm');
-        const productContainer = document.getElementById('productContainer');
-        const imagesInput = document.getElementById('images');
-        const imageWarning = document.getElementById('imageWarning');
+        const productDisplay = document.getElementById('productDisplay');
+        const productDetailsSection = document.getElementById('product-details');
         const productSelect = document.getElementById('product');
         const otherProductDiv = document.getElementById('otherProductDiv');
         const otherProductInput = document.getElementById('otherProduct');
-
+        const additionalImagesInput = document.getElementById('additionalImages');
+    
         productSelect.addEventListener('change', () => {
             if (productSelect.value === 'Other') {
                 otherProductDiv.style.display = 'block';
@@ -138,53 +142,62 @@
                 otherProductInput.required = false;
             }
         });
-
+    
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-
+    
             const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
             const product = productSelect.value === 'Other' ? otherProductInput.value : productSelect.value;
             const price = document.getElementById('price').value;
             const description = document.getElementById('description').value;
-            const images = imagesInput.files;
-
-            if (images.length > 4) {
-                imageWarning.style.display = 'block';
-                return;
-            } else {
-                imageWarning.style.display = 'none';
-            }
-
-            const productHTML = document.createElement('div');
-            productHTML.classList.add('product');
-
-            let imagesHTML = '';
-            const promises = Array.from(images).map(image => {
-                return new Promise((resolve) => {
+            const primaryImage = document.getElementById('primaryImage').files[0];
+    
+            const promises = [];
+    
+            if (primaryImage) {
+                promises.push(new Promise((resolve) => {
                     const reader = new FileReader();
                     reader.onload = function (event) {
-                        resolve(`<img src="${event.target.result}" alt="${product}">`);
+                        resolve(`<img src="${event.target.result}" alt="Primary Image" style="max-width: 100%; margin: 10px 0;">`);
                     };
-                    reader.readAsDataURL(image);
-                });
-            });
-
-            Promise.all(promises).then((imageElements) => {
-                imagesHTML = imageElements.join('');
-                productHTML.innerHTML = `
-                    <div class="images">${imagesHTML}</div>
-                    <h4>${product}</h4>
-                    <p><strong>Price:</strong> $${price}</p>
-                    <p>${description}</p>
-                    <p><strong>Seller:</strong> ${name}</p>
+                    reader.readAsDataURL(primaryImage);
+                }));
+            }
+    
+            Promise.all(promises).then((imagesHTML) => {
+                const imageHTML = imagesHTML[0] || '';
+                productDisplay.innerHTML = `
+                    <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                        <div style="flex: 1; text-align: left;">
+                            <p><strong>Seller Name:</strong></p>
+                            <p><strong>Email Address:</strong></p>
+                            <p><strong>Phone Number:</strong></p>
+                            <p><strong>Product Name:</strong></p>
+                            <p><strong>Price:</strong></p>
+                            <p><strong>Description:</strong></p>
+                            <p><strong>Image:</strong></p>
+                        </div>
+                        <div style="flex: 1; text-align: left;">
+                            <p>${name}</p>
+                            <p>${email}</p>
+                            <p>${phone}</p>
+                            <p>${product}</p>
+                            <p>$${price}</p>
+                            <p>${description}</p>
+                            <div>${imageHTML}</div>
+                        </div>
+                    </div>
                 `;
-                productContainer.appendChild(productHTML);
+                productDetailsSection.style.display = 'block';
             });
-
+    
             form.reset();
             otherProductDiv.style.display = 'none';
         });
     </script>
+
 </body>
 
 </html>
