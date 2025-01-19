@@ -1,85 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Become a Seller</title>
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-        <link rel="stylesheet" href="style.css">
-    </head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
 
-    <body>
-        <section id="header">
-            <a href="#"><img src="img/logo.png" class="logo" alt=""></a>
-            <div>
-                <ul id="navbar">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="shop.html">Shop</a></li>
-                    <li><a href="blog.html">Sell</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="shop.html">Contact</a></li>
-                    <li id="lg-bag"><a class="active" href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
-                    <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
-                </ul>
-            </div>
-            <div id="mobile">
-                <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
-                <i id="bar" class="fas fa-outdent"></i>
-            </div>
-        </section>
+<body>
+    <section id="header">
+        <a href="#"><img src="img/logo.png" class="logo" alt=""></a>
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="blog.html">Sell</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="shop.html">Contact</a></li>
+                <li id="lg-bag"><a class="active" href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
+                <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
+            </ul>
+        </div>
+        <div id="mobile">
+            <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+            <i id="bar" class="fas fa-outdent"></i>
+        </div>
+    </section>
 
-        <section id="page-header3">
-            <h2>#Become a Seller</h2>
-            <p>Sell Online with Nexo           </p>
-            
-        </section>
+    <section id="page-header3">
+        <h2>#Become a Seller</h2>
+        <p>Sell Online with Nexo</p>
+    </section>
 
-        
+    <section id="seller-form" class="section-p1">
+        <div class="form-container">
+            <h3>Sell Your Items</h3>
+            <form id="sellForm">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
 
-        <footer class="section-p1">
-            <div class="col">
-                <img src="img/logo.png" alt="">
-                <h4>Contact</h4>
-                <p><strong>Address: </strong>College of Engineering, Adoor</p>
-                <p><strong>Phone: </strong>College of Engineering, Adoor</p>
-                <div class="follow">
-                    <h4>Follow us</h4>
-                    <div class="icon">
-                        <i class="fab fa-facebook-f"></i>
-                        <i class="fab fa-instagram"></i>
-                        <i class="fa-brands fa-discord"></i>
-                        <i class="fa-brands fa-github"></i>
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
 
-                    </div>
+                <label for="product">Product Name:</label>
+                <input type="text" id="product" name="product" placeholder="Enter product name" required>
+
+                <label for="price">Price:</label>
+                <input type="number" id="price" name="price" placeholder="Enter price in USD" required>
+
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" placeholder="Enter product description" required></textarea>
+
+                <label for="images">Upload Images (Max 4):</label>
+                <input type="file" id="images" name="images" accept="image/*" multiple required>
+                <p id="imageWarning" style="color: red; display: none;">You can upload a maximum of 4 images.</p>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="product-list" class="section-p1">
+        <h3>Recently Listed Items</h3>
+        <div id="productContainer">
+            <!-- Dynamically added products will appear here -->
+        </div>
+    </section>
+
+    <footer class="section-p1">
+        <div class="col">
+            <img src="img/logo.png" alt="">
+            <h4>Contact</h4>
+            <p><strong>Address: </strong>College of Engineering, Adoor</p>
+            <p><strong>Phone: </strong>College of Engineering, Adoor</p>
+            <div class="follow">
+                <h4>Follow us</h4>
+                <div class="icon">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fa-brands fa-discord"></i>
+                    <i class="fa-brands fa-github"></i>
                 </div>
             </div>
+        </div>
 
-            <div class="col">
-                <h4>About</h4>
-                <a href="#">About us</a>
-                <a href="#">Contact Us</a>
-                <a href="#">Services</a>
-                <a href="#">Meet the team</a>
-            </div>
+        <div class="col">
+            <h4>About</h4>
+            <a href="#">About us</a>
+            <a href="#">Contact Us</a>
+            <a href="#">Services</a>
+            <a href="#">Meet the team</a>
+        </div>
 
-            <div class="col">
-                <h4>My Account</h4>
-                <a href="#">Sign In</a>
-                <a href="#">View Cart</a>
-                <a href="#">Help</a>
-            </div>
+        <div class="col">
+            <h4>My Account</h4>
+            <a href="#">Sign In</a>
+            <a href="#">View Cart</a>
+            <a href="#">Help</a>
+        </div>
 
-            <div class="col">
-                <h4>Secured Payment Gateway</h4>
-                <img src="img/pay/pay.png" alt="">
+        <div class="col">
+            <h4>Secured Payment Gateway</h4>
+            <img src="img/pay/pay.png" alt="">
+        </div>
+    </footer>
 
-            </div>
-        </footer>
-        <script src="script.js"></script>
+    <script>
+        const form = document.getElementById('sellForm');
+        const productContainer = document.getElementById('productContainer');
+        const imagesInput = document.getElementById('images');
+        const imageWarning = document.getElementById('imageWarning');
 
-    </body>
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const product = document.getElementById('product').value;
+            const price = document.getElementById('price').value;
+            const description = document.getElementById('description').value;
+            const images = imagesInput.files;
+
+            if (images.length > 4) {
+                imageWarning.style.display = 'block';
+                return;
+            } else {
+                imageWarning.style.display = 'none';
+            }
+
+            const productHTML = document.createElement('div');
+            productHTML.classList.add('product');
+
+            let imagesHTML = '';
+            Array.from(images).forEach(image => {
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    imagesHTML += `<img src="${event.target.result}" alt="${product}">`;
+                    productHTML.innerHTML = `
+                        ${imagesHTML}
+                        <h4>${product}</h4>
+                        <p><strong>Price:</strong> $${price}</p>
+                        <p>${description}</p>
+                        <p><strong>Seller:</strong> ${name}</p>
+                    `;
+                    productContainer.appendChild(productHTML);
+                };
+                reader.readAsDataURL(image);
+            });
+
+            form.reset();
+        });
+        
+    </script>
+</body>
 
 </html>

@@ -883,5 +883,50 @@ footer.section-p1 .col:last-child img {
 
 #page-header3 h2,
 #page-header3 p{
+  color: black;
+}
+
+/* Seller Form */
+#seller-form .form-container {
+  max-width: 600px;
+  margin: 20px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#seller-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#seller-form form label {
+  font-weight: bold;
+}
+
+#seller-form form input, #seller-form form textarea, #seller-form form button {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+#seller-form form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+#seller-form form button {
+  background-color: #4CAF50;
   color: white;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#seller-form form button:hover {
+  background-color: #45a049;
 }
