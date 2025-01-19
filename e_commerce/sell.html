@@ -47,7 +47,18 @@
                 <input type="email" id="email" name="email" placeholder="Enter your email" required>
 
                 <label for="product">Product Name:</label>
-                <input type="text" id="product" name="product" placeholder="Enter product name" required>
+                <select id="product" name="product" required>
+                    <option class="pro-select" value="">Select a product</option>
+                    <option value="Calculator">Calculator</option>
+                    <option value="Lab Coat">Lab Coat</option>
+                    <option value="Books">Books</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <div id="otherProductDiv" style="display: none;">
+                    <label for="otherProduct">Specify Product:</label>
+                    <input type="text" id="otherProduct" name="otherProduct" placeholder="Enter product name">
+                </div>
 
                 <label for="price">Price:</label>
                 <input type="number" id="price" name="price" placeholder="Enter price in USD" required>
@@ -114,12 +125,25 @@
         const productContainer = document.getElementById('productContainer');
         const imagesInput = document.getElementById('images');
         const imageWarning = document.getElementById('imageWarning');
+        const productSelect = document.getElementById('product');
+        const otherProductDiv = document.getElementById('otherProductDiv');
+        const otherProductInput = document.getElementById('otherProduct');
+
+        productSelect.addEventListener('change', () => {
+            if (productSelect.value === 'Other') {
+                otherProductDiv.style.display = 'block';
+                otherProductInput.required = true;
+            } else {
+                otherProductDiv.style.display = 'none';
+                otherProductInput.required = false;
+            }
+        });
 
         form.addEventListener('submit', (e) => {
             e.preventDefault();
 
             const name = document.getElementById('name').value;
-            const product = document.getElementById('product').value;
+            const product = productSelect.value === 'Other' ? otherProductInput.value : productSelect.value;
             const price = document.getElementById('price').value;
             const description = document.getElementById('description').value;
             const images = imagesInput.files;
@@ -135,25 +159,31 @@
             productHTML.classList.add('product');
 
             let imagesHTML = '';
-            Array.from(images).forEach(image => {
-                const reader = new FileReader();
-                reader.onload = function (event) {
-                    imagesHTML += `<img src="${event.target.result}" alt="${product}">`;
-                    productHTML.innerHTML = `
-                        ${imagesHTML}
-                        <h4>${product}</h4>
-                        <p><strong>Price:</strong> $${price}</p>
-                        <p>${description}</p>
-                        <p><strong>Seller:</strong> ${name}</p>
-                    `;
-                    productContainer.appendChild(productHTML);
-                };
-                reader.readAsDataURL(image);
+            const promises = Array.from(images).map(image => {
+                return new Promise((resolve) => {
+                    const reader = new FileReader();
+                    reader.onload = function (event) {
+                        resolve(`<img src="${event.target.result}" alt="${product}">`);
+                    };
+                    reader.readAsDataURL(image);
+                });
+            });
+
+            Promise.all(promises).then((imageElements) => {
+                imagesHTML = imageElements.join('');
+                productHTML.innerHTML = `
+                    <div class="images">${imagesHTML}</div>
+                    <h4>${product}</h4>
+                    <p><strong>Price:</strong> $${price}</p>
+                    <p>${description}</p>
+                    <p><strong>Seller:</strong> ${name}</p>
+                `;
+                productContainer.appendChild(productHTML);
             });
 
             form.reset();
+            otherProductDiv.style.display = 'none';
         });
-        
     </script>
 </body>
 
