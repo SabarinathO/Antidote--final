@@ -47,8 +47,16 @@ function confirmDelivery(radio) {
   const orderCard = radio.closest(".order-card");
   const receivedStatus = orderCard.querySelector(".received-status");
   const confirmSection = orderCard.querySelector(".order-confirm");
+  const statusDelivered = orderCard.querySelector(".status-delivered");
 
   if (confirm("Are you sure you have received the item?")) {
+      const currentDate = new Date().toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "short",
+          day: "2-digit"
+      });
+
+      statusDelivered.textContent = `● Delivered on ${currentDate}`; // Set current date
       receivedStatus.classList.remove("hidden"); // Show delivery confirmation
       confirmSection.classList.add("hidden"); // Hide selection options
   } else {
@@ -68,4 +76,5 @@ function confirmNotReceived(radio) {
       radio.checked = false; // Uncheck if the user cancels
   }
 }
+
 
