@@ -53,12 +53,30 @@
                         <p>₹432</p>
                     </div>
                 </div>
-                <div class="order-status">
+        
+                <div class="order-confirm">
+                    <label>
+                        <input type="radio" name="order1" class="confirm-checkbox" value="received" onchange="confirmDelivery(this)">
+                        <span style="color: green;">✔</span> item received
+                    </label>
+                    <label>
+                        <input type="radio" name="order1" class="confirm-checkbox" value="not-received" onchange="confirmNotReceived(this)">
+                        <span style="color: red;">✖</span> item not received
+                    </label>
+                    
+                </div>
+        
+                <div class="order-status received-status hidden">
                     <span class="status-delivered">● Delivered on Jan 05</span>
                     <p>Your item has been delivered</p>
                 </div>
+        
+                <div class="order-status not-received-status hidden">
+                    <span class="status-not-received">⚠ Your item has not been received.</span>
+                    <p>Please wait or contact support.</p>
+                </div>
             </div>
-    
+        
             <!-- Order Card 2 -->
             <div class="order-card">
                 <div class="order-info">
@@ -70,46 +88,30 @@
                         <p>₹241</p>
                     </div>
                 </div>
-                <div class="order-status">
+        
+                <div class="order-confirm">
+                    <label>
+                        <input type="radio" name="order1" class="confirm-checkbox" value="received" onchange="confirmDelivery(this)">
+                        <span style="color: green;">✔</span> item received
+                    </label>
+                    <label>
+                        <input type="radio" name="order1" class="confirm-checkbox" value="not-received" onchange="confirmNotReceived(this)">
+                        <span style="color: red;">✖</span> item not received
+                    </label>
+                </div>
+        
+                <div class="order-status received-status hidden">
                     <span class="status-delivered">● Delivered on Jan 05</span>
                     <p>Your item has been delivered</p>
                 </div>
-            </div>
-    
-            <!-- Order Card 3 -->
-            <div class="order-card">
-                <div class="order-info">
-                    <div class="order-image">
-                        <img src="img/products/f1.jpg" alt="Product">
-                    </div>
-                    <div class="order-details">
-                        <h3>Orpat calculator</h3>
-                        <p>₹279</p>
-                    </div>
-                </div>
-                <div class="order-status">
-                    <span class="status-delivered">● Delivered on Dec 05, 2024</span>
-                    <p>Your item has been delivered</p>
-                </div>
-            </div>
-
-            <!-- Order Card 4 -->
-            <div class="order-card">
-                <div class="order-info">
-                    <div class="order-image">
-                        <img src="img/products/f1.jpg" alt="Product">
-                    </div>
-                    <div class="order-details">
-                        <h3>Instrument Box</h3>
-                        <p>₹432</p>
-                    </div>
-                </div>
-                <div class="order-status">
-                    <span class="status-delivered">● Delivered on Jan 05</span>
-                    <p>Your item has been delivered</p>
+        
+                <div class="order-status not-received-status hidden">
+                    <span class="status-not-received">⚠ Your item has not been received.</span>
+                    <p>Please wait or contact support.</p>
                 </div>
             </div>
         </section>
+
 
         <!-- Footer -->
     <div class="footer">

@@ -1034,52 +1034,130 @@ select{
 }
 
 /* Order List */
+/* Order List */
 .order-list {
-    padding: 20px;
-    max-width: 1000px;
-    margin: 0 auto;
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .order-card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 20px;
-    margin-bottom: 15px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 15px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .order-info {
-    display: flex;
-    align-items: center;
-    gap: 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
 .order-image img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 5px;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 5px;
 }
 
 .order-details {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 .order-details h3 {
-    font-size: 18px;
-    color: #333;
-    margin: 5px 0;
+  font-size: 18px;
+  color: #333;
+  margin: 5px 0;
+}
+
+.order-confirm {
+  display: flex;
+  flex-direction: column; /* Stack buttons vertically */
+  gap: 8px;
+  margin: 10px 0;
+  align-items: flex-start; /* Align to the left */
 }
 
 .order-status {
-    text-align: right;
+  text-align: right;
+  margin-top: 10px;
+}
+
+.order-confirm label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #f8f9fa;
+  padding: 10px 15px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  min-width: 200px; /* Ensures both buttons are the same size */
+  justify-content: flex-start;
+  transition: background 0.3s ease, border 0.3s ease;
+  font-weight: bold;
+}
+
+/* Hover effect */
+.order-confirm label:hover {
+  background-color: #e9ecef;
+}
+
+/* Hide default radio button */
+.order-confirm input {
+  display: none;
+}
+
+/* Show tick & cross by default */
+.order-confirm label::before {
+  font-size: 18px;
+  font-weight: bold;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+}
+
+/* Green Tick (✔) for Received */
+.order-confirm input[value="received"] + label::before {
+  content: "✔"; /* Show tick */
+  color: #28a745; /* Green color */
+}
+
+/* Red Cross (✖) for Not Received */
+.order-confirm input[value="not-received"] + label::before {
+  content: "✖"; /* Show cross */
+  color: #dc3545; /* Red color */
+}
+
+/* Selected styles */
+.order-confirm input[value="received"]:checked + label {
+  background-color: #d4edda;
+  border-color: #28a745;
+}
+
+.order-confirm input[value="not-received"]:checked + label {
+  background-color: #f8d7da;
+  border-color: #dc3545;
 }
 
 .status-delivered {
-    color: #28a745;
-    font-weight: bold;
+  color: #28a745;
+  font-weight: bold;
+}
+
+.status-not-received {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+/* Hide order status by default */
+.hidden {
+  display: none;
 }

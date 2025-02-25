@@ -40,3 +40,32 @@ document.addEventListener("DOMContentLoaded", () => {
   searchButton.addEventListener("click", filterOrders); // Filter on button click
   searchInput.addEventListener("keyup", filterOrders); // Filter as you type
 });
+
+// Order delivery status
+
+function confirmDelivery(radio) {
+  const orderCard = radio.closest(".order-card");
+  const receivedStatus = orderCard.querySelector(".received-status");
+  const confirmSection = orderCard.querySelector(".order-confirm");
+
+  if (confirm("Are you sure you have received the item?")) {
+      receivedStatus.classList.remove("hidden"); // Show delivery confirmation
+      confirmSection.classList.add("hidden"); // Hide selection options
+  } else {
+      radio.checked = false; // Uncheck if the user cancels
+  }
+}
+
+function confirmNotReceived(radio) {
+  const orderCard = radio.closest(".order-card");
+  const notReceivedStatus = orderCard.querySelector(".not-received-status");
+  const confirmSection = orderCard.querySelector(".order-confirm");
+
+  if (confirm("Are you sure you have not received the item?")) {
+      notReceivedStatus.classList.remove("hidden"); // Show not received message
+      confirmSection.classList.add("hidden"); // Hide selection options
+  } else {
+      radio.checked = false; // Uncheck if the user cancels
+  }
+}
+
