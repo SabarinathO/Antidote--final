@@ -256,6 +256,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const chatMessages = document.getElementById("chatMessages");
     const messageInput = document.getElementById("messageInput");
     const sendMessage = document.getElementById("sendMessage");
+    const backButton = document.getElementById("backButton"); // Back button
+
+    const messageList = document.getElementById("messageList"); // Messaging list container
 
     let currentChatUser = "";
 
@@ -272,10 +275,16 @@ document.addEventListener("DOMContentLoaded", function () {
             // Clear previous messages (optional)
             chatMessages.innerHTML = "";
 
-            // Show chat box and hide placeholder
-            chatPlaceholder.style.display = "none";
+            // Show chat box and hide messaging list
+            messageList.style.display = "none";
             chatBox.style.display = "flex";
         });
+    });
+
+    // Back button functionality
+    backButton.addEventListener("click", function () {
+        chatBox.style.display = "none";  // Hide chat box
+        messageList.style.display = "block"; // Show messaging list
     });
 
     sendMessage.addEventListener("click", function () {
@@ -311,3 +320,40 @@ document.addEventListener("DOMContentLoaded", function () {
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 });
+
+
+document.getElementById("backButton").addEventListener("click", function () {
+    document.getElementById("chatBox").style.display = "none";
+    document.getElementById("messageList").style.display = "block";
+    
+    // Hide placeholder when coming back
+    document.getElementById("chatPlaceholder").style.display = "none";
+});
+// Handle Back Button Click
+document.getElementById("backButton").addEventListener("click", function () {
+    document.getElementById("chatBox").style.display = "none";
+    document.getElementById("messageList").style.display = "block";
+
+    // Hide the chatPlaceholder when going back
+    document.getElementById("chatPlaceholder").style.display = "none";
+});
+
+// Handle Window Resize to Restore Default Layout
+window.addEventListener("resize", function () {
+    const chatBox = document.getElementById("chatBox");
+    const chatPlaceholder = document.querySelector(".chat-placeholder"); // Ensure correct selection
+    const messageList = document.getElementById("messageList");
+
+    if (window.innerWidth > 992) {
+        // If chat is active, hide placeholder and ensure chat box is visible
+        if (chatBox.style.display === "block" || chatBox.innerHTML.trim() !== "") {
+            chatPlaceholder.style.display = "none"; 
+        } else {
+            chatPlaceholder.style.display = "block";
+        }
+
+        // Restore layout after resizing back
+        messageList.style.display = "block";
+    }
+});
+
