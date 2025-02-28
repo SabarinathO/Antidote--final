@@ -191,9 +191,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const groupForm = document.getElementById("groupForm");
     const createGroupBtn = document.getElementById("createGroupBtn");
     const closeGroupForm = document.getElementById("closeGroupForm");
+    const backButton = document.getElementById("backButton"); // ✅ Added Back Button
     const groupProfilePicInput = document.getElementById("groupProfilePic");
     const groupPicPreview = document.getElementById("groupPicPreview");
-    const backButton = document.getElementById("backButton"); // Back button
 
     let currentChat = null;
     let groupImageURL = "images/default-group.png"; // Default group image
@@ -220,11 +220,6 @@ document.addEventListener("DOMContentLoaded", function () {
         currentChat = name;
     }
 
-    // 📌 Back Button Functionality (Close Chat)
-    backButton.addEventListener("click", function () {
-        chatBox.style.display = "none"; // Hide chat box
-    });
-
     // 📌 Open Group Form
     editIcon.addEventListener("click", function () {
         chatBox.style.display = "none";
@@ -250,7 +245,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // 📌 Create Group Chat
+    // 📌 Create Group Chat (With Last Created Group at the Top)
     createGroupBtn.addEventListener("click", function () {
         const groupName = document.getElementById("groupName").value.trim();
         if (groupName === "") {
@@ -271,8 +266,10 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
         `;
 
-        // Append to chat list & Attach Click Event
-        messageList.appendChild(newGroup);
+        // ✅ Ensure the last created group appears FIRST
+        messageList.prepend(newGroup); 
+
+        // Attach event listener for the new group
         attachChatEventListeners();
 
         // Hide form and open chat
@@ -304,7 +301,12 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    // 📌 Back Button Functionality (✅ Now Working)
+    backButton.addEventListener("click", function () {
+        chatBox.style.display = "none";  // Hide chat box
+        groupForm.style.display = "none"; // Hide group form (if open)
+    });
+
     // 📌 Attach event listeners on page load for existing chats
     attachChatEventListeners();
 });
-
