@@ -59,6 +59,18 @@
   }
   
 /* Container layout for responsiveness */
+
+/* Make the messenger container flexible */
+.messenger-container {
+    flex: 1;
+    min-width: 300px; /* Ensure it doesn't shrink too much */
+}
+
+/* Chat placeholder should only appear when needed */
+.chat-placeholder {
+    flex: 1;
+    min-width: 300px;
+}
 body{
     font-family: "Poppins", sans-serif;
     color: var(--color-dark);
@@ -200,6 +212,15 @@ main .container .left .profile{
     padding: 0.2rem 0.5rem;
 }
 
+/* Profile picture at the bottom */
+.sidebar .profile-picture {
+    margin-top: auto;
+    width: 2.5rem;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
 
 /*------------notification popup------------*/
 
@@ -244,6 +265,250 @@ main .container .left .profile{
 .left .notification-popup small {
     display: block;
 }
+
+/* messaging */
+
+.messenger-container {
+    width: 100%;  /* Allow it to take full space */
+    min-height: 80vh; /* Give it a proper height */
+    background: var(--color-white);
+    border-radius: var(--card-border-radius);
+    padding: 1rem;
+    color: var(--color-dark);
+    display: flex;
+    flex-direction: column;
+}
+.messenger-container, 
+.chat-placeholder {
+    display: flex;
+    flex-direction: column;
+}
+/* Top Section (Header & Edit Icon) */
+.top-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+}
+
+/* Search Bar */
+.search-bar {
+    display: flex;
+    align-items: center;
+    background: var(--color-black);
+    padding: var(--search-padding);
+    border-radius: var(--border-radius);
+    margin: 1rem 0;
+}
+
+.search-bar i {
+    color: var(--color-gray);
+    margin-right: 0.5rem;
+}
+
+.search-bar input {
+    background: none;
+    border: none;
+    outline: none;
+    color: var(--color-white);
+    width: 100%;
+}
+
+/* Messages List */
+.message-list {
+    height: 50vh;
+    overflow-y: auto;
+}
+
+.message {
+    display: flex;
+    align-items: center;
+    padding: 0.7rem;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    transition: background 0.3s ease;
+}
+
+.message:hover {
+    background: var(--color-black);
+}
+
+.message.unread {
+    font-weight: bold;
+}
+
+.message .profile-picture {
+    width: 3rem;
+    height: 3rem;
+    margin-right: 0.8rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.message-details {
+    flex-grow: 1;
+}
+
+.message-details h5 {
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+}
+
+.message-details p {
+    font-size: 0.8rem;
+    color: var(--color-gray);
+}
+
+/* Unread Indicator */
+.unread-indicator {
+    width: 8px;
+    height: 8px;
+    background: var(--color-primary);
+    border-radius: 50%;
+}
+
+.messenger-icon i {
+    font-size: 3rem;
+    color: var(--color-gray);
+}
+
+.send-message-btn {
+    background: var(--color-primary);
+    color: white;
+    padding: var(--btn-padding);
+    border-radius: var(--border-radius);
+    margin-top: 1rem;
+    cursor: pointer;
+}
+
+
+/* Chat container (Right section) */
+.chat-container {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: var(--color-light);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    height: 75vh; /* Adjust height */
+}
+
+/* Chat header (Profile pic & Name) */
+.chat-header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-gray);
+}
+
+.chat-header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* Chat messages section (Scrollable) */
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-height: 50vh; /* Ensure it doesn't exceed height */
+}
+/* Scrollbar styling for Webkit browsers (Chrome, Edge, Safari) */
+.chat-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+    background: var(--color-gray);
+    border-radius: 10px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+    background: transparent;
+}
+/* Sent message (Align right) */
+.sent-message {
+    align-self: flex-end;
+    background: var(--color-primary);
+    color: white;
+    padding: 0.6rem 1rem;
+    border-radius: var(--border-radius);
+    max-width: 60%;
+    text-align: right;
+    position: relative;
+}
+
+/* Sent message - Sender Name */
+.sent-message::before {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--color-white);
+    margin-bottom: 3px;
+}
+
+/* Received message (Align left) */
+.received-message {
+    align-self: flex-start;
+    background: var(--color-light);
+    color: var(--color-dark);
+    padding: 0.6rem 1rem;
+    border-radius: var(--border-radius);
+    max-width: 60%;
+    text-align: left;
+    position: relative;
+}
+
+/* Received message - Sender Name */
+.received-message::before {
+    content: attr(data-sender);
+    display: block;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--color-dark);
+    margin-bottom: 3px;
+}
+
+/* Chat input container */
+.chat-input {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem;
+    background: white;
+    border-radius: var(--border-radius);
+    margin-top: 1rem;
+    border: 1px solid var(--color-gray);
+}
+
+/* Chat input field */
+.chat-input input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 0.5rem;
+    font-size: 1rem;
+    background: transparent;
+}
+
+/* Send button */
+.chat-input button {
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+}
+
+
 
 /*-----------theme customizer------------*/
 
@@ -392,9 +657,40 @@ main .container .left .profile{
     margin-right: 1rem;
 }
 
+#chatBox {
+    display: none;
+    flex-direction: column;
+    height: 80vh;
+    top: 0;
+    left: 0;
+    background: var(--color-white);
+}
+
+#backButton {
+    display: none;  
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
 
 
 @media screen and (max-width: 992px) {
+    #messageList {
+        display: block;
+        width: 100%;
+    }
+
+    .chat-placeholder{
+        display: none;
+    }
+    
+    #chatBox {
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+    }
     #backButton {
         display: block;
     }
@@ -468,7 +764,81 @@ main .container .left .profile{
     .container {
         flex-direction: column; /* Stack items vertically */
     }
+    .messenger-container {
+        width: 80% !important; /* ✅ Ensure it takes 80% width */
+        margin: 0 auto; /* ✅ Center it */
+    }
+    main .container .middle{
+        grid-column: 2/3;
+    }
     
 }
 
 
+
+/* Group Chat Form (Styled Like Chat Box) */
+#groupForm {
+    display: none; /* Initially Hidden */
+    position: fixed;
+    top: 53%;
+    min-height: 80vh;
+    width: 100%;
+    right: 280px; /* Positioning it to the right */
+    transform: translateY(-50%);
+    width: 350px;
+    background: var(--color-white);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+}
+/* Profile Upload Section */
+.profile-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.profile-upload img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ccc;
+    margin-bottom: 8px;
+}
+
+.profile-upload p {
+    font-size: 12px;
+    color: gray;
+}
+
+/* Input Fields */
+.group-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Create Group Button */
+#createGroupBtn,
+#closeGroupForm {
+    width: 100%;
+    margin: 2px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #6a0dad;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#createGroupBtn:hover {
+    background: #5c0ba5;
+}

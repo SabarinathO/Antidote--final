@@ -216,7 +216,6 @@ document.addEventListener("DOMContentLoaded", function () {
         chatProfilePic.src = profilePic || "images/default-profile.png";
         chatBox.style.display = "flex";
         groupForm.style.display = "none";
-        chatMessages.innerHTML = `<p class="system-message">Welcome to ${name}!</p>`;
         currentChat = name;
     }
 

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Members</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+
+        .group-box {
+            width: 400px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .group-header {
+            background: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            position: sticky;
+            top: 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .group-members {
+            max-height: 300px; /* Scrollable area */
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        .member {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .member img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .member-name {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .admin-badge {
+            background: green;
+            color: white;
+            font-size: 12px;
+            padding: 3px 6px;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="group-box">
+        <div class="group-header">
+            NEXO  
+            <br>
+            <span style="font-size: 14px; color: gray;">6 members</span>
+        </div>
+        
+        <div class="group-members">
+            <div class="member">
+                <img src="images/profile-1.jpg" alt="User">
+                <span class="member-name">You</span>
+            </div>
+            <div class="member">
+                <img src="images/profile-10.jpg" alt="User">
+                <span class="member-name">Rahuk</span>
+                <span class="admin-badge">Group Admin</span>
+            </div>
+            <div class="member">
+                <img src="images/profile-13.jpg" alt="User">
+                <span class="member-name">Sabarinath</span>
+            </div>
+            <div class="member">
+                <img src="images/profile-17.jpg" alt="User">
+                <span class="member-name">Jayan</span>
+            </div>
+            <div class="member">
+                <img src="images/user5.jpg" alt="User">
+                <span class="member-name">Alvin</span>
+            </div>
+            <div class="member">
+                <img src="images/user6.jpg" alt="User">
+                <span class="member-name">Hari</span>
+            </div>
+            <div class="member">
+                <img src="images/user7.jpg" alt="User">
+                <span class="member-name">cicil</span>
+            </div>
+            <div class="member">
+                <img src="images/user8.jpg" alt="User">
+                <span class="member-name">Jobin</span>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

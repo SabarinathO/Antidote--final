@@ -198,10 +198,18 @@
 
     <!-- Add Members Input -->
     <input type="text" id="groupMembers" placeholder="Add Members (comma-separated)">
-
-    <!-- Timespan Input -->
-    <input type="number" id="groupTimespan" placeholder="Timespan (hours)">
-
+    
+    <div class="time-span">
+        <label for="timespanType"><strong>Select Timespan Type:</strong></label>
+        <select id="timespanType">
+          <option value="none">None</option>
+          <option value="months">Months</option>
+          <option value="days">Days</option>
+          <option value="hours">Hours</option>
+        </select>
+        <input type="number" id="timespanInput" placeholder="Enter value" min="1" 
+           style="display: none; padding: 8px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px;">
+    </div>
     <!-- Create & Cancel Buttons -->
     <button id="createGroupBtn">Create Group</button>
     <button id="closeGroupForm">Cancel</button>
@@ -266,8 +274,18 @@
     
         </div>
     </div>
-    
+    <script>
+        document.getElementById("timespanType").addEventListener("change", function () {
+            const inputBox = document.getElementById("timespanInput");
+            if (this.value === "none") {
+                inputBox.style.display = "none"; // Hide input when "None" is selected
+            } else {
+                inputBox.style.display = "block"; // Show input for Months, Days, or Hours
+                inputBox.placeholder = `Enter ${this.value}`;
+            }
+        });
+    </script>
 <script src="script2.js"></script>
 
-</body>
+</body> 
 </html>

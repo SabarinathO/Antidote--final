@@ -180,132 +180,63 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    const chatBox = document.getElementById("chatBox");
-    const chatProfilePic = document.getElementById("chatProfilePic");
-    const chatUserName = document.getElementById("chatUserName");
-    const chatMessages = document.getElementById("chatMessages");
-    const messageInput = document.getElementById("messageInput");
-    const sendMessage = document.getElementById("sendMessage");
-    const messageList = document.querySelector(".message-list");
-    const editIcon = document.getElementById("editIcon");
-    const groupForm = document.getElementById("groupForm");
-    const createGroupBtn = document.getElementById("createGroupBtn");
-    const closeGroupForm = document.getElementById("closeGroupForm");
-    const backButton = document.getElementById("backButton"); // ✅ Added Back Button
-    const groupProfilePicInput = document.getElementById("groupProfilePic");
-    const groupPicPreview = document.getElementById("groupPicPreview");
+    const editProfileBtn = document.querySelector(".profile-actions .btn");
+    const modal = document.getElementById("editProfileModal");
+    const closeBtn = document.querySelector(".close");
 
-    let currentChat = null;
-    let groupImageURL = "images/default-group.png"; // Default group image
+    const usernameField = document.getElementById("username");
+    const bioField = document.getElementById("bio");
+    const profilePictureInput = document.getElementById("profilePicture");
 
-    // 📌 Attach Click Event to Individual Chats (Existing & Dynamic)
-    function attachChatEventListeners() {
-        document.querySelectorAll(".message").forEach(message => {
-            message.addEventListener("click", function () {
-                const profilePic = this.querySelector(".profile-picture img")?.src || "images/default-profile.png";
-                const name = this.querySelector("h5").innerText;
+    const profileUsername = document.querySelector(".profile-info .username");
+    const profileBio = document.querySelector(".bio b");
+    const profileImage = document.querySelector(".profile-picture img");
 
-                openChat(name, profilePic);
-            });
-        });
-    }
-
-    // 📌 Open Chat (For Individual & Group Chats)
-    function openChat(name, profilePic) {
-        chatUserName.textContent = name;
-        chatProfilePic.src = profilePic || "images/default-profile.png";
-        chatBox.style.display = "flex";
-        groupForm.style.display = "none";
-        currentChat = name;
-    }
-
-    // 📌 Open Group Form
-    editIcon.addEventListener("click", function () {
-        chatBox.style.display = "none";
-        groupForm.style.display = "block";
+    // Open Modal
+    editProfileBtn.addEventListener("click", function () {
+        modal.style.display = "flex";
+        usernameField.value = profileUsername.textContent;
+        bioField.value = profileBio.textContent;
     });
 
-    // 📌 Close Group Form
-    closeGroupForm.addEventListener("click", function () {
-        groupForm.style.display = "none";
+    // Close Modal
+    closeBtn.addEventListener("click", function () {
+        modal.style.display = "none";
     });
 
-    // 📌 Handle Group Profile Picture Upload & Preview
-    groupProfilePicInput.addEventListener("change", function (event) {
+    // Close when clicking outside modal
+    window.addEventListener("click", function (e) {
+        if (e.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+
+    // Handle Profile Picture Change (Live Preview)
+    profilePictureInput.addEventListener("change", function (event) {
         const file = event.target.files[0];
 
         if (file) {
             const reader = new FileReader();
             reader.onload = function (e) {
-                groupPicPreview.src = e.target.result;
-                groupImageURL = e.target.result;
+                console.log("New Image URL:", e.target.result); // Debugging Step
+                profileImage.src = e.target.result; // ✅ Set new image
             };
             reader.readAsDataURL(file);
         }
     });
 
-    // 📌 Create Group Chat (With Last Created Group at the Top)
-    createGroupBtn.addEventListener("click", function () {
-        const groupName = document.getElementById("groupName").value.trim();
-        if (groupName === "") {
-            alert("Please enter a group name!");
-            return;
-        }
+    // Handle Form Submission
+    document.getElementById("editProfileForm").addEventListener("submit", function (e) {
+        e.preventDefault();
 
-        // 📌 Create Group Chat Element
-        const newGroup = document.createElement("div");
-        newGroup.classList.add("message", "group-chat");
-        newGroup.innerHTML = `
-            <div class="profile-picture">
-                <img src="${groupImageURL}" alt="Group">
-            </div>
-            <div class="message-details">
-                <h5>${groupName}</h5>
-                <p>Group created just now</p>
-            </div>
-        `;
+        const newUsername = usernameField.value;
+        const newBio = bioField.value;
 
-        // ✅ Ensure the last created group appears FIRST
-        messageList.prepend(newGroup); 
+        profileUsername.textContent = newUsername;
+        profileBio.textContent = newBio;
 
-        // Attach event listener for the new group
-        attachChatEventListeners();
-
-        // Hide form and open chat
-        groupForm.style.display = "none";
-        openChat(groupName, groupImageURL);
+        alert("Profile Updated Successfully!");
+        modal.style.display = "none";
     });
-
-    // 📌 Send Message Function
-    function sendMessageToChat() {
-        if (messageInput.value.trim() === "") return;
-
-        const messageDiv = document.createElement("div");
-        messageDiv.classList.add("sent-message");
-
-        messageDiv.innerHTML = `
-            <span class="sender-name">You</span>
-            <p>${messageInput.value}</p>
-        `;
-
-        chatMessages.appendChild(messageDiv);
-        messageInput.value = "";
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-    sendMessage.addEventListener("click", sendMessageToChat);
-    messageInput.addEventListener("keypress", function (event) {
-        if (event.key === "Enter") {
-            sendMessageToChat();
-        }
-    });
-
-    // 📌 Back Button Functionality (✅ Now Working)
-    backButton.addEventListener("click", function () {
-        chatBox.style.display = "none";  // Hide chat box
-        groupForm.style.display = "none"; // Hide group form (if open)
-    });
-
-    // 📌 Attach event listeners on page load for existing chats
-    attachChatEventListeners();
 });
+
