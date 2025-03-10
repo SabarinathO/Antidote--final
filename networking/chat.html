@@ -169,7 +169,7 @@
                     <img src="" id="chatProfilePic" alt="">
                     <div>
                         <h3 id="chatUserName"></h3>
-                        <h6 style=" color: grey;
+                        <h6 id="showGroupBox" style=" color: grey;
                         margin-top: 2px;
                         cursor: pointer;" >tap here for group info</h6>
                     </div>
@@ -184,8 +184,97 @@
                     <input type="text" id="messageInput" placeholder="Type a message...">
                     <button id="sendMessage">➤</button>
                 </div>
-
                 
+                <div id="groupBox" style="
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: none;
+    z-index: 1000;">
+    
+    <div class="group-header" style="
+        background: white;
+        text-align: center;
+        padding: 15px;
+        font-size: 18px;
+        font-weight: bold;
+        position: sticky;
+        top: 0;
+        border-bottom: 1px solid #ddd;">
+        NEXO  
+        <br>
+        <span style="font-size: 14px; color: gray;">6 members</span>
+    </div>
+    
+    <div class="group-members" style="
+        max-height: 300px;
+        overflow-y: auto;
+        padding: 10px;">
+        
+        <div class="member" style="
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #eee;">
+            <img src="images/profile-1.jpg" alt="User" style="
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                margin-right: 10px;">
+            <span class="member-name" style="font-size: 16px; font-weight: bold;">You</span>
+        </div>
+
+        <div class="member" style="
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #eee;">
+            <img src="images/profile-10.jpg" alt="User" style="
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                margin-right: 10px;">
+            <span class="member-name" style="font-size: 16px; font-weight: bold;">Rahul</span>
+            <span class="admin-badge" style="
+                background: green;
+                color: white;
+                font-size: 12px;
+                padding: 3px 6px;
+                border-radius: 5px;
+                margin-left: 10px;">Group Admin</span>
+        </div>
+
+        <!-- Add more members as needed -->
+
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const groupBox = document.getElementById('groupBox');
+    const showGroupBox = document.getElementById('showGroupBox');
+
+    // Show group box when tapping "Tap here for group info"
+    showGroupBox.addEventListener('click', function (event) {
+        groupBox.style.display = 'block';
+        event.stopPropagation(); // Prevent immediate closing
+    });
+
+    // Hide group box when clicking outside
+    document.addEventListener('click', function (event) {
+        if (!groupBox.contains(event.target) && event.target !== showGroupBox) {
+            groupBox.style.display = 'none';
+        }
+    });
+});
+</script>
+
             </div>
 
             <!-- Group Chat Creation Form -->
@@ -220,11 +309,10 @@
     <button id="createGroupBtn">Create Group</button>
     <button id="closeGroupForm">Cancel</button>
 </div>
-
-            
         </div>
     </main>
 
+    
     <!------------------------------theme customization--------------------->
     <div class="customize-theme">
         <div class="card">
@@ -371,6 +459,7 @@
             document.getElementById("chatTimer").textContent = "00:00:00";
         });
     </script>
+
 <script src="script2.js"></script>
 
 </body> 
