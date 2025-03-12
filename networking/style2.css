@@ -677,6 +677,10 @@ main .container .left .profile{
 
 
 @media screen and (max-width: 992px) {
+
+    #groupBox{
+        left: 50%;
+    }
     #messageList {
         display: block;
         width: 100%;
@@ -841,4 +845,168 @@ main .container .left .profile{
 
 #createGroupBtn:hover {
     background: #5c0ba5;
+}
+
+#groupBox{
+    position: fixed;
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background: var(--color-white);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: none;
+    z-index: 1000;
+}
+
+
+.group-header{
+        background: var(--color-light);
+        text-align: center;
+        padding: 15px;
+        font-size: 18px;
+        font-weight: bold;
+        position: sticky;
+        top: 0;
+        border-bottom: 1px solid #ddd;
+}
+
+.group-members{
+     max-height: 300px;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.member{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.member img{
+
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.admin-badge{
+                background: green;
+                color: white;
+                font-size: 12px;
+                padding: 3px 6px;
+                border-radius: 5px;
+                margin-left: 10px;
+}
+
+
+@media screen and (max-width: 1200px){
+    #groupBox{
+        left: 66%;
+        width: 264px;
+    }
+}
+@media screen and (max-width: 992px) {
+    
+    #groupBox{
+        left: 50%;
+    }
+    #messageList {
+        display: block;
+        width: 100%;
+    }
+
+    .chat-placeholder{
+        display: none;
+    }
+    
+    #chatBox {
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+    }
+    #backButton {
+        display: block;
+    }
+    main .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .customize-theme .card{
+        width: 92vw;
+    }
+    .sidebar {
+        width: 100%;
+        height: 4rem;
+        flex-direction: row;
+        justify-content: space-around;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        top: auto;
+        border-radius: 0;
+        transition: all 0.3s ease;
+    }
+
+    .sidebar .menu-item {
+        width: auto;
+        height: 100%;
+    }
+
+    /* Move active indicator below icons */
+    .sidebar .menu-item.active::before {
+        top: auto;
+        bottom: -4px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 2rem;
+        height: 4px;
+        border-radius: 5px;
+    }
+
+    /* Fix notification badge positioning */
+    .sidebar .menu-item .notification-count {
+        top: -15px; /* Move it above icon */
+        right: 50%;
+        transform: translateX(50%);
+        font-size: 0.7rem;
+        padding: 0.3rem 0.6rem;
+    }
+
+    .sidebar .profile-picture {
+        width: 2rem;
+        height: 2rem;
+        margin-bottom: 0;
+    }
+    .left .notification-popup {
+        left: 50%;
+        bottom: 4.5rem; /* Position above sidebar */
+        top: auto; /* Remove default top positioning */
+        transform: translateX(-50%);
+        width: 20rem;
+        box-shadow: 0 0 1rem hsl(var(--color-primary), 75%, 60%, 25%);
+    }    
+        /* Move arrow below the popup */
+    .left .notification-popup::before {
+        left: 50%;
+        bottom: -0.6rem;
+        top: auto;
+        transform: translateX(-50%) rotate(45deg);
+    }
+    .container {
+        flex-direction: column; /* Stack items vertically */
+    }
+    .messenger-container {
+        width: 80% !important; /* ✅ Ensure it takes 80% width */
+        margin: 0 auto; /* ✅ Center it */
+    }
+    main .container .middle{
+        grid-column: 2/3;
+    }
+    
 }

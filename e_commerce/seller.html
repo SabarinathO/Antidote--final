@@ -31,8 +31,8 @@
             </div>
         </section>
 
-        <section id="pbanner" class="section-m1">
-            <h2>#Previous<span> Orders</span></p>
+        <section id="pbanner5" class="section-m1">
+            <h2>#Selled<span>Items</span></p>
         </section>
 
         <section class="search-bar">
@@ -41,76 +41,40 @@
         </section>
     
         <!-- Order List -->
-        <section class="order-list">
-            <!-- Order Card 1 -->
-            <div class="order-card">
-                <div class="order-info">
-                    <div class="order-image">
-                        <img src="img/products/f1.jpg" alt="Product">
-                    </div>
-                    <div class="order-details">
-                        <h3>Casio Calculator</h3>
-                        <p>₹432</p>
-                    </div>
+        <div class="order-card" data-customer="John Doe">
+            <div class="order-info">
+                <div class="order-image">
+                    <img src="img/products/f1.jpg" alt="Product">
                 </div>
-        
-                <div class="order-confirm">
-                    <label>
-                        <input type="radio" name="order1" class="confirm-checkbox" value="received" onchange="confirmDelivery(this)">
-                        <span style="color: green;">✔</span> item sent
-                    </label>
-                    <label>
-                        <input type="radio" name="order1" class="confirm-checkbox" value="not-received" onchange="confirmNotReceived(this)">
-                        <span style="color: red;">✖</span> item not sent
-                    </label>
-                    
-                </div>
-        
-                <div class="order-status received-status hidden">
-                    <span class="status-delivered">● Delivered on Jan 05</span>
-                    <p>Your item has been sent</p>
-                </div>
-        
-                <div class="order-status not-received-status hidden">
-                    <span class="status-not-received">⚠ Your item has not been sent.</span>
-                    <p>Please wait or contact support.</p>
+                <div class="order-details">
+                    <h3>Casio Calculator</h3>
+                    <p>₹432</p>
                 </div>
             </div>
         
-            <!-- Order Card 2 -->
-            <div class="order-card">
-                <div class="order-info">
-                    <div class="order-image">
-                        <img src="img/products/f1.jpg" alt="Product">
-                    </div>
-                    <div class="order-details">
-                        <h3>Student Labcoat</h3>
-                        <p>₹241</p>
-                    </div>
-                </div>
-        
-                <div class="order-confirm">
-                    <label>
-                        <input type="radio" name="order1" class="confirm-checkbox" value="received" onchange="confirmDelivery(this)">
-                        <span style="color: green;">✔</span> item sent
-                    </label>
-                    <label>
-                        <input type="radio" name="order1" class="confirm-checkbox" value="not-received" onchange="confirmNotReceived(this)">
-                        <span style="color: red;">✖</span> item not sent
-                    </label>
-                </div>
-        
-                <div class="order-status received-status hidden">
-                    <span class="status-delivered">● Delivered on Jan 05</span>
-                    <p>Your item has been delivered</p>
-                </div>
-        
-                <div class="order-status not-received-status hidden">
-                    <span class="status-not-received">⚠ Your item has not been received.</span>
-                    <p>Please wait or contact support.</p>
-                </div>
+            <div class="order-confirm">
+                <label>
+                    <input type="radio" name="order1" class="confirm-checkbox" value="received" onchange="confirmDelivery(this)">
+                    <span style="color: green;">✔</span> item sent
+                </label>
+                <label>
+                    <input type="radio" name="order1" class="confirm-checkbox" value="not-received" onchange="confirmNotReceived(this)">
+                    <span style="color: red;">✖</span> item not sent
+                </label>
             </div>
-        </section>
+        
+            <div class="order-status received-status hidden">
+                <span class="status-customer"></span> <!-- New span for customer name -->
+                <span class="status-delivered">● Delivered on Jan 05</span>
+                <p>Your item has been sent</p>
+            </div>
+        
+            <div class="order-status not-received-status hidden">
+                <span class="status-not-received">⚠ Your item has not been sent.</span>
+                <p>Please wait or contact support.</p>
+            </div>
+        </div>
+        
 
 
         <!-- Footer -->
@@ -155,7 +119,7 @@
          </div>
     </div>
 
-        <script src="script.js"></script>
+        <script src="seller.js"></script>
     </body>
 
 </html>

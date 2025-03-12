@@ -286,6 +286,7 @@ main .container .left .profile{
     gap: 0.5rem;
     height: 12rem;
 }
+
 .middle .stories .story{
     flex-direction: column;
     justify-content: space-between;
@@ -313,22 +314,22 @@ main .container .left .profile{
     z-index: 2;
 }
 .middle .stories .story:nth-child(1){
-    background: url('./images/story-1.jpg') no-repeat center center/cover;
+    background: url('./images/in6.png') no-repeat center center/cover;
 }
 .middle .stories .story:nth-child(2){
-    background: url('./images/story-2.jpg') no-repeat center center/cover;
+    background: url('./images/in1.jpeg') no-repeat center center/cover;
 }
 .middle .stories .story:nth-child(3){
-    background: url('./images/story-3.jpg') no-repeat center center/cover;
+    background: url('./images/in2.jpeg') no-repeat center center/cover;
 }
 .middle .stories .story:nth-child(4){
-    background: url('./images/story-4.jpg') no-repeat center center/cover;
+    background: url('./images/in3.jpg') no-repeat center center/cover;
 }
 .middle .stories .story:nth-child(5){
-    background: url('./images/story-5.jpg') no-repeat center center/cover;
+    background: url('./images/in4.png') no-repeat center center/cover;
 }
 .middle .stories .story:nth-child(6){
-    background: url('./images/story-6.jpg') no-repeat center center/cover;
+    background: url('./images/in5.png') no-repeat center center/cover;
 }
 
 .middle .story .profile-picture{

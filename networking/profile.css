@@ -314,6 +314,7 @@ main .container .left{
 
 .posts-grid img {
     width: 100%;
+    height: 163px;
     border-radius: 5px;
     cursor: pointer;
 }
